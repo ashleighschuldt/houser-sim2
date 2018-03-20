@@ -7,10 +7,12 @@ class Header extends Component {
     render(){
         return(
             <header className='header'>
-            <span><img alt='logo' src={header_logo}/></span>
-            <span><b>Houser</b></span> 
-            <span>Dashboard</span>
-            <span><Link to={`/`}>Logout</Link></span>
+            <div className='header-container'>
+            <div><img alt='logo' src={header_logo}/></div>
+            <div className='houser'><b>Houser</b></div> 
+            <div className='header-dashboard'>Dashboard</div>
+            <div className='logout'><Link to={`/`}>Logout</Link></div>
+            </div>
             </header>
         )
     }

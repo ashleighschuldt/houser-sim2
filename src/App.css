@@ -18,6 +18,30 @@ Body {
     color: white;
     display: flex;
 }
+.header img{
+    padding-top: 10px;
+}
+.header-container{
+    width: 65%;
+    display: flex;
+    margin: auto;
+}
+.houser{
+    font-size: 30px;
+    padding: 10px;
+    
+}
+.header-dashboard{
+    font-size: 30px;
+    padding: 10px;
+    margin: auto 10px;
+}
+.logout{
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    margin-left: 50%;
+}
 a {
     text-decoration: none;
     color: white;
@@ -92,4 +116,99 @@ a {
 img.delete {
     height: 2vh;
     width: 1vh;
+}
+.wizard-container {
+    width: 65%;
+    background: #eaf1ed;
+    margin: 5% auto 5% auto;
+    height: 80vh;
+}
+.bubbles {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.wizard-listing{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 30px;
+
+}
+.step-text{
+   display: flex;
+   justify-content: center;
+}
+
+.cancel {
+    border: none;
+    padding: 5px 10px;
+    background: #fec2c2;
+    font-size: 15px;
+}
+.next{
+    display: flex;
+    background: #3b5249;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 20px;
+    margin: 10px auto;
+}
+.description {
+    display: flex;
+    width: 100%;
+    margin: 5px auto;
+    height: 20vh;
+}
+.name {
+    display: flex;
+    margin: 5px auto;
+    width: 100%;
+}
+.step-container{
+    display: flex-box;
+    width: 65%;
+    margin: 15px auto;
+}
+.buttons{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.complete{
+    display: flex;
+    background: #8aea92;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 20px;
+    margin: 10px auto;
+}
+.city-state{
+    margin: 10px auto;
+    width: 100%;
+    display: flex;
+    
+}
+.address {
+    width: 100%;
+    margin: 10px auto;
+}
+.zip {
+    margin: 10px auto;
+}
+.city{
+    margin: 10px auto;
+}
+.state{
+    margin: 10px auto;
 }
