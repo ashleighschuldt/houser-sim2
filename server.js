@@ -76,6 +76,30 @@ app.delete(`/api/properties/:id`, (req, res) => {
         .catch(handleDbError(res));
 })
 
+app.post(`/api/properties`, (req, res) => {
+    const db = app.get('db');
+   db.property.createProperty({
+       user_id: req.session.user,
+       name: req.body.name,
+       description: req.body.description,
+       address: req.body.address,
+       city: req.body.city,
+       state: req.body.state,
+       zip: req.body.zip,
+       image: req.body.image,
+       loan_amount: req.body.loanAmount,
+       monthly_mortgage: req.body.monthlyMortgage,
+       desired_rent: req.body.desiredRent
+   })
+   .then(properties => {
+    return db.property.getProperty({ userId: req.session.user })
+    })
+   .then(properties => {
+       res.status(200).send(properties);
+    }) 
+   .catch(handleDbError(res));
+})
+
 
 
 

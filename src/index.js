@@ -6,11 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
-import updateProperty from './Redux/Reducers/reducer';
+import rootReducer from './Redux/Reducers/reducer';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore( updateProperty, composeEnhancers(
+const store = createStore( rootReducer, composeEnhancers(
     applyMiddleware(
       promiseMiddleware()
     )
