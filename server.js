@@ -100,6 +100,14 @@ app.post(`/api/properties`, (req, res) => {
    .catch(handleDbError(res));
 })
 
+app.get(`/api/filter`, (req, res) => {
+    const db = app.get('db');
+    db.property.filter({ userId: req.session.user, filter: req.body.filter })
+        .then(filter => {
+            res.status(200).send(filter);
+        })
+        .catch(handleDbError(res));
+})
 
 
 

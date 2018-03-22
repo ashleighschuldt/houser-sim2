@@ -9,7 +9,7 @@ CREATE TABLE property (
     state varchar,
     zip varchar,
     image varchar,
-    loan_amount varchar,
-    monthly_mortgage varchar,
-    desired_rent varchar
+    loan_amount numeric,
+    monthly_mortgage numeric,
+    desired_rent numeric
 )

@@ -12,6 +12,8 @@ class Dashboard extends Component {
             properties: []
         }
         this.deleteProperty = this.deleteProperty.bind(this);
+        this.filterProperties = this.filterProperties.bind(this);
+        this.resetProperties = this.resetProperties.bind(this);
     }
 
     componentDidMount(){
@@ -33,6 +35,27 @@ class Dashboard extends Component {
            
     }
 
+    filterProperties(){
+        const numFilter = Number(this.refs.filter.value)
+        axios.get(`/api/filter`, {
+            filter: numFilter
+        })
+        .then(response => {
+            this.setState({
+                properties: response.data
+            })
+        })
+    }
+
+    resetProperties(){
+        this.refs.filter.value = 0
+        axios.get(`/api/properties`)
+            .then( response => {
+                this.setState({
+                    properties: response.data
+                })
+            })
+    }
     
 
 
@@ -63,9 +86,9 @@ class Dashboard extends Component {
                 <Header />
                 <div className='dashboard'>
                 <Link to={`/wizard/1`}><button className='add-property'> <b>Add new property</b> </button></Link>
-                <div className='filter-container'>List properties with "desired rent" greater than: $<input className='filter-input'></input>
-                <button className='filter'>Filter</button>
-                <button className='reset'>Reset</button>
+                <div className='filter-container'>List properties with "desired rent" greater than: $<input ref='filter' className='filter-input'/>
+                <button className='filter' onClick={ this.filterProperties }>Filter</button>
+                <button className='reset' onClick={this.resetProperties }>Reset</button>
                 </div>
                 <div className='listings'>
                 <p className='home-listing'><b>Home Listings</b></p>

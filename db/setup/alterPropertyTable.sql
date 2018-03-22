@@ -1,0 +1,2 @@
+ALTER TABLE property
+ALTER COLUMN loan_amount NUMERIC
