@@ -43,7 +43,7 @@ class Auth extends Component{
                 <input name='email' value={this.state.email} onChange={this.handleChange} type='text'></input>
                 <br></br>
                 <label>Password</label>
-                <input name='password' value={this.state.password} onChange={this.handleChange} type='text'></input>
+                <input name='password' type='password' value={this.state.password} onChange={this.handleChange} type='text'></input>
                 <br></br>
                 <button onClick={(event)=>{this.createUserOrLogin(event, 'login')}}>Login</button>
                 <button onClick={(event)=>{this.createUserOrLogin(event, 'register')}}>Register</button>

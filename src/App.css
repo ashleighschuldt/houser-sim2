@@ -197,7 +197,11 @@ img.delete {
     margin: 10px auto;
     width: 100%;
     display: flex;
-    
+    box-sizing: border-box;
+}
+.state {
+    margin-left: 15%;
+    box-sizing: border-box;
 }
 .address {
     width: 100%;
@@ -206,9 +210,54 @@ img.delete {
 .zip {
     margin: 10px auto;
 }
-.city{
+.image-preview {
     margin: 10px auto;
+    border: solid 1px #3b5249;
+    width: 90%;
+    height: 25vh;
 }
-.state{
-    margin: 10px auto;
+.image-url {
+    box-sizing: border-box;
+    
+}
+.image-url-label {
+    margin: auto 30px;
+}
+.image-url-label label {
+    margin: auto 10px;
+}
+.image-url-label input {
+    width: 80%;
+}
+.loan-amount input {
+    width: 70%;
+    margin: 10px;
+}
+.monthly-mortgage input{
+    width: 70%;
+    margin: 10px;
+}
+.loan-amount{
+    margin: 10px 0px 10px 20%;
+}
+.monthly-mortgage {
+    margin: 10px 0px 10px 20% ;
+}
+.calc-rent{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 30%;
+}
+.desiredRent input {
+    width: 80%;
+    margin-top: 10px;
+    
+}
+.desiredRent {
+    box-sizing: border-box;
+}
+.step5 {
+    box-sizing: border-box;
+    margin-left: 10%;
+    width: 100%;
 }

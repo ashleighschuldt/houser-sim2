@@ -7,7 +7,7 @@ import stepInactive from '../Images/step_inactive.png';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {stepOne, stepTwo, stepThree, updateProperty } from '../Redux/Actions/action';
+import {stepOne, stepTwo, stepThree, updateProperty, cancel } from '../Redux/Actions/action';
 import axios from 'axios';
 
 class Wizard extends Component {
@@ -17,6 +17,8 @@ class Wizard extends Component {
         // this.stepTwo = this.stepTwo.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addProperty = this.addProperty.bind(this);
+        this.clearProperty = this.clearProperty.bind(this);
+        
     }
 
     componentDidMount(){
@@ -64,6 +66,10 @@ class Wizard extends Component {
         this.props.updateProperty(updateProperty);
     }
 
+    clearProperty(){
+        this.props.cancel();
+    }
+
     addProperty(){
         axios.post(`/api/properties`, {
             name: this.props.property.name,
@@ -78,7 +84,8 @@ class Wizard extends Component {
             desiredRent: this.props.property.desiredRent
         })
         .then( res => 
-            this.props.history.push(`/Dashboard`))
+            this.props.history.push(`/Dashboard`),
+            this.clearProperty())
         
     }
 
@@ -90,7 +97,7 @@ class Wizard extends Component {
                 <div className='wizard-container'>
                     <div className='wizard-listing'>
                     <b>Add new listing</b>
-                    <Link to={`/Dashboard`}><button className='cancel'><b>Cancel</b></button></Link>
+                    <Link to={`/Dashboard`}><button className='cancel' onClick = { this.clearProperty }><b>Cancel</b></button></Link>
                     </div>
                     <div className='step'>
                     <div className='step-text'>
@@ -125,7 +132,7 @@ class Wizard extends Component {
                 <div className='wizard-container'>
                     <div className='wizard-listing'>
                     Add new listing
-                    <Link to={`/Dashboard`}><button className='cancel'>Cancel</button></Link>
+                    <Link to={`/Dashboard`}><button className='cancel' onClick = { this.clearProperty }>Cancel</button></Link>
                     </div>
                     <div className='step'>
                     <div className='step-text'>
@@ -144,12 +151,18 @@ class Wizard extends Component {
                     <br></br>
                     <input className='address' ref='address' name='address' value={this.props.property.address} onChange={this.handleChange}/>
                     <br></br>
+                    <div className='city-state'>
+                    <div className='city'>
                     <label><b>City</b></label>
+                    <br></br>
+                    <input ref='city' name='city' value={this.props.property.city} onChange={this.handleChange}/>
+                    </div>
+                    <br></br>
+                    <div className='state'>
                     <label><b>State</b></label>
                     <br></br>
-                    <div className='city-state'>
-                    <input className='city' ref='city' name='city' value={this.props.property.city} onChange={this.handleChange}/>
-                    <input className='state' ref='state' name='state'value={this.props.property.state} onChange={this.handleChange}/>
+                    <input ref='state' name='state'value={this.props.property.state} onChange={this.handleChange}/>
+                    </div>
                     </div>
                     <br></br>
                     <label><b>Zip</b></label>
@@ -170,7 +183,7 @@ class Wizard extends Component {
                 <div className='wizard-container'>
                     <div className='wizard-listing'>
                     Add new listing
-                    <Link to={`/Dashboard`}><button className='cancel'>Cancel</button></Link>
+                    <Link to={`/Dashboard`}><button className='cancel' onClick = { this.clearProperty }>Cancel</button></Link>
                     </div>
                     <div className='step'>
                     <div className='step-text'>
@@ -184,11 +197,16 @@ class Wizard extends Component {
                     <img alt='inactive' src={stepInactive}/>
                     </div>
                     </div>
-                    <label>Image URL</label>
+                    <div className='image-url'>
+                    <div className='image-preview'><img src={ this.props.property.image }/></div>
+                    <div className='image-url-label'>
+                    <label><b>Image URL</b></label>
                     <input name='image' value={this.props.property.image} onChange={this.handleChange}/>
+                    </div>
                     <div className='buttons'>
                     <Link to={`/wizard/${2}`}><button className='next'>Previous Step</button></Link>
                     <Link to={`/wizard/${4}`}><button className='next'>Next Step</button></Link>
+                    </div>
                     </div>
                 </div>
                 </div>
@@ -200,7 +218,7 @@ class Wizard extends Component {
                 <div className='wizard-container'>
                     <div className='wizard-listing'>
                     Add new listing
-                    <Link to={`/Dashboard`}><button className='cancel'>Cancel</button></Link>
+                    <Link to={`/Dashboard`}><button className='cancel' onClick = { this.clearProperty }>Cancel</button></Link>
                     </div>
                     <div className='step'>
                     <div className='step-text'>
@@ -214,13 +232,21 @@ class Wizard extends Component {
                     <img alt='inactive' src={stepInactive}/>
                     </div>
                     </div>
-                    <label>Loan Amount</label>
+                    <div className='step-4'>
+                    <div className='loan-amount'>
+                    <label><b>Loan Amount</b></label>
+                    <br></br>
                     <input name='loanAmount' value={this.props.property.loanAmount} onChange={this.handleChange}/>
-                    <label>Monthly Mortgage</label>
+                    </div>
+                    <div className='monthly-mortgage'>
+                    <label><b>Monthly Mortgage</b></label>
+                    <br></br>
                     <input name='monthlyMortgage'value={this.props.property.monthlyMortgage} onChange={this.handleChange}/>
+                    </div>
                     <div className='buttons'>
                     <Link to={`/wizard/${3}`}><button className='next'>Previous Step</button></Link>
                     <Link to={`/wizard/${5}`}><button className='next'>Next Step</button></Link>
+                    </div>
                     </div>
                 </div>
                 </div>
@@ -232,7 +258,7 @@ class Wizard extends Component {
                 <div className='wizard-container'>
                     <div className='wizard-listing'>
                     Add new listing
-                    <Link to={`/Dashboard`}><button className='cancel'>Cancel</button></Link>
+                    <Link to={`/Dashboard`}><button className='cancel' onClick = { this.clearProperty }>Cancel</button></Link>
                     </div>
                     <div className='step'>
                     <div className='step-text'>
@@ -246,12 +272,20 @@ class Wizard extends Component {
                     <img alt='active' src={stepActive}/>
                     </div>
                     </div>
-                    Recommended Rent 
-                    <label>Desired Rent</label>
+                    <div className='step5'>
+                    <div className='calc-rent'>
+                    <b>Recommended Rent ${this.props.property.monthlyMortgage*1.25}</b>
+                    </div> 
+                    <br></br>
+                    <div className='desiredRent'>
+                    <label><b>Desired Rent</b></label>
+                    <br></br>
                     <input name='desiredRent' value={this.props.property.desiredRent} onChange={this.handleChange}/>
+                    </div>
                     <div className='buttons'>
                     <Link to={`/wizard/${4}`}><button className='next'>Previous Step</button></Link>
                     <button className='complete' onClick={this.addProperty}>Complete</button>
+                    </div>
                     </div>
                 </div>
                 </div>
@@ -264,7 +298,7 @@ class Wizard extends Component {
 }
 
     function mapDispatchToProps(dispatch){
-        return bindActionCreators({stepOne, stepTwo, stepThree, updateProperty }, dispatch);
+        return bindActionCreators({ updateProperty, cancel }, dispatch);
     }
 
 export default connect (state => state, mapDispatchToProps)(Wizard);

@@ -9,10 +9,13 @@
 // export const ADD_MONTHLY_MORTGAGE = 'ADD_MONTHLY_MORTGAGE';
 // export const ADD_DESIRED_RENT = 'ADD_DESIRED_RENT';
 
-export const STEP_ONE = 'STEP_ONE';
-export const STEP_TWO = 'STEP_TWO';
-export const STEP_THREE = 'STEP_THREE';
+// export const STEP_ONE = 'STEP_ONE';
+// export const STEP_TWO = 'STEP_TWO';
+// export const STEP_THREE = 'STEP_THREE';
+
 export const UPDATE_PROPERTY = 'UPDATE_PROPERTY';
+export const CLEAR_PROPERTY = 'CANCEL';
+
 
 
 

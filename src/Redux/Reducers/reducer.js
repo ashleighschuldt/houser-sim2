@@ -1,45 +1,59 @@
 import {combineReducers} from 'redux';
 // import { ADD_NAME, ADD_DESCRIPTION, ADD_ADDRESS, ADD_CITY, ADD_STATE, ADD_ZIP, ADD_IMAGE, ADD_LOAN_AMOUNT, ADD_MONTHLY_MORTGAGE, ADD_DESIRED_RENT } from '../Actions/constraints'; 
 
-import { STEP_ONE, STEP_TWO, STEP_THREE, UPDATE_PROPERTY } from '../Actions/constraints';
+import {  UPDATE_PROPERTY, CLEAR_PROPERTY } from '../Actions/constraints';
 
 
-function stepOne(state = {}, action){
-    switch(action.type){
-        case STEP_ONE:
-            return action.payload; 
-        default: 
-            return state
-    }
-}
+// function stepOne(state = {}, action){
+//     switch(action.type){
+//         case STEP_ONE:
+//             return action.payload; 
+//         default: 
+//             return state
+//     }
+// }
 
-function stepTwo(state = {}, action){
-    switch(action.type){
-        case STEP_TWO:
-            return action.payload;
-        default:
-            return state    
-    }
-}
+// function stepTwo(state = {}, action){
+//     switch(action.type){
+//         case STEP_TWO:
+//             return action.payload;
+//         default:
+//             return state    
+//     }
+// }
 
-function stepThree(state = {}, action){
-    switch(action.type){
-        case STEP_THREE:
-            return action.payload;
-        default:
-            return state;
-    }
-}
+// function stepThree(state = {}, action){
+//     switch(action.type){
+//         case STEP_THREE:
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// }
 
 function property ( state = {}, action){
     switch(action.type){
         case UPDATE_PROPERTY:
             return {...state, ...action.payload}
+        case CLEAR_PROPERTY:
+            return {
+                
+            }
         default:
             return state;
         }
 }
 
+// function cancel (state = {}, action){
+//     switch(action.type){
+//         case CLEAR_PROPERTY:
+//             return {
+//                 state: {}
+//             }
+//             default:
+//                 return state;
+//     }
+// }
 
 // function updateProperty (state = {
 //         name: '',
@@ -79,6 +93,6 @@ function property ( state = {}, action){
 //     }
 // }   
 
-const rootReducer = combineReducers({stepOne, stepTwo, stepThree, property});
+const rootReducer = combineReducers({ property });
 
 export default rootReducer;

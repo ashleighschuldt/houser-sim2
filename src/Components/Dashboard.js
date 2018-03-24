@@ -36,10 +36,8 @@ class Dashboard extends Component {
     }
 
     filterProperties(){
-        const numFilter = Number(this.refs.filter.value)
-        axios.get(`/api/filter`, {
-            filter: numFilter
-        })
+        const filter = Number(this.refs.filter.value)
+        axios.get(`/api/${filter}`)
         .then(response => {
             this.setState({
                 properties: response.data
